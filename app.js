@@ -6,11 +6,11 @@ const userRouter = require('./routes/userRoutes');
 
 const app = express();
 
-// 1. MIDDLEWARES
+// 1A: MIDDLEWARES
 app.use(morgan('dev'));
 app.use(express.json());
 
-// Creating our own middlewares
+// 1B: Creating our own middlewares
 app.use((req, res, next) => {
   console.log('Hello from the middleware 👋');
   next();
@@ -21,9 +21,9 @@ app.use((req, res, next) => {
   next();
 });
 
-// 3. ROUTES
+// 2. ROUTES
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
 
-// 4. SERVER
+// 3. SERVER
 module.exports = app;
