@@ -18,40 +18,6 @@ mongoose
   })
   .then(() => console.log('DB connection successful'));
 
-// Basic Schema
-const tourSchema = new mongoose.Schema({
-  name: {
-    type: 'string',
-    required: [true, 'A tour must have a name'],
-    unique: true,
-  },
-  rating: {
-    type: 'number',
-    default: 4.5,
-  },
-  price: {
-    type: 'number',
-    required: [true, 'A tour must have a price'],
-  },
-});
-
-// Basic Model
-const Tour = mongoose.model('Tour', tourSchema);
-
-const testTour = new Tour({
-  name: 'The Park Camper',
-  price: 997,
-});
-
-testTour
-  .save()
-  .then((doc) => {
-    console.log(doc);
-  })
-  .catch((err) => {
-    console.log('ERROR :', err);
-  });
-
 // The port
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
